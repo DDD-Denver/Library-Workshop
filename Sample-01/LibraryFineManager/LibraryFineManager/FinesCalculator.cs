@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LibraryFineManager
+{
+    public class FinesCalculator
+    {
+        double finePerDay = 0.25;
+
+        public double CalculateFine(DateTime dueDate, DateTime dateToCalculateFine)
+        {
+            double fine = 0;
+            double daysOverdue = (dateToCalculateFine - dueDate).Days;
+
+            if (daysOverdue > 2)
+            {
+                fine = daysOverdue * finePerDay;
+            }
+            return fine;
+        }
+    }
+}
