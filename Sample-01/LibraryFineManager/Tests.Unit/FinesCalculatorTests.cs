@@ -34,12 +34,14 @@ namespace Tests.Unit
         {
             //Arrange
             var dueDate = DateTime.Parse("5/1/2014");
-            var dateToCalculateFine = dueDate.AddDays(1);
+            const int daysLate = 1;
+            var dateToCalculateFine = dueDate.AddDays(daysLate);
 
             //Act
             var fine = finesCalculator.CalculateFine(dueDate, dateToCalculateFine);
 
             //Assert
+            Assert.IsTrue(daysLate < finesCalculator.GracePeriodInDays);
             Assert.AreEqual(0, fine);
         }
     }
